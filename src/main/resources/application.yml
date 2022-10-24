@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3308/jwtauth
+    username: root
+    password: '}m2w~a84zcY{b4bCAa'
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+logging:
+  level:
+    root: WARN
+    me.aidimirov.jwtauth: DEBUG
+auth:
+  jwt:
+    secret: 'R+-mhif,QRc%-FCCi?g9'
+    expiration:
+      access_token: 5
+      refresh_token: 10
