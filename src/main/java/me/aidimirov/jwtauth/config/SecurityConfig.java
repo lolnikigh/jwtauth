@@ -33,13 +33,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .cors().disable()
                 .csrf().disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .authorizeRequests()
-                .antMatchers("/user/token/refresh/**", "/register/**").permitAll()
-                .antMatchers("/user/**").hasAnyAuthority("ROLE_USER")
-                .anyRequest().authenticated()
-                .and()
+                .sessionManagement(sessionManagement ->
+                        sessionManagement
+                                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
+                .authorizeRequests(authorizeRequests ->
+                        authorizeRequests
+                                .antMatchers("/user/token/refresh/**", "/register/**").permitAll()
+                                .antMatchers("/user/**").hasAnyAuthority("ROLE_USER")
+                                .anyRequest().authenticated()
+                )
                 .addFilter(filter)
                 .addFilterBefore(new JwtAuthorizationFilter(jwtService), UsernamePasswordAuthenticationFilter.class);
     }
