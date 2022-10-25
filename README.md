@@ -16,7 +16,7 @@ JSON Web Token (JWT) — это открытый стандарт (RFC 7519) д�
 3. Сервер авторизации обрабатывает запрос, и, если не возникло исключений, генерирует Токен доступа и Токен обновления с помощью секретного ключа.
    ```java
        @Override
-    protected void successfulAuthentication(HttpServletRequest request,
+       protected void successfulAuthentication(HttpServletRequest request,
                                             HttpServletResponse response,
                                             FilterChain chain,
                                             Authentication authResult) throws IOException {
@@ -34,8 +34,10 @@ JSON Web Token (JWT) — это открытый стандарт (RFC 7519) д�
    ```
 4. Сервер авторизации помещает Токены в тело ответа (в данном случае, можно и в заголовке).
    ```json
-   {"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0dXNlciIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9sb2dpbiIsImV4cCI6MTY2NjY4OTAxMywiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl19.bOphqTW8Wz7LWOatSLL2bv-xkzs_R4ng--bKG2ZdumwMW9mKZqlk0qzB2sIlY9QwEutM3DM_DkEuOxUdWpUUZA",
-   "refresh_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0dXNlciIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9sb2dpbiIsImV4cCI6MTY2NjY4OTMxM30.EP973Zhg9OSfS7zVX0M6fSpyCxEda70c2HdH9G13pAoZHgPtGmRjPd1waeY3GFmCk4skUZc6MZ5mqWBlj3pEhQ"}
+   {
+          "access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0dXNlciIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9sb2dpbiIsImV4cCI6MTY2NjY4OTAxMywiYXV0aG9yaXRpZXMiO  lsiUk9MRV9VU0VSIl19.bOphqTW8Wz7LWOatSLL2bv-xkzs_R4ng--bKG2ZdumwMW9mKZqlk0qzB2sIlY9QwEutM3DM_DkEuOxUdWpUUZA",
+      "refresh_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0dXNlciIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9sb2dpbiIsImV4cCI6MTY2NjY4OTMxM30.EP973Zhg9OSfS7zVX0M6fSpyCxEda70c2HdH9G13pAoZHgPtGmRjPd1waeY3GFmCk4skUZc6MZ5mqWBlj3pEhQ"
+   }
    ```
 6. Клиентское приложение отправляет запрос с Токеном доступа в заголовке Authorization для получения данных с сервера ресурсов.
    Пример запроса
