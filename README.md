@@ -1,5 +1,4 @@
-# jwtauth
-JWT Authorization and authentication server.
+# Авторизация и аутентификация с помощью JSON Web Token
 
 ## Описание
 
