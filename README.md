@@ -35,7 +35,7 @@ JSON Web Token (JWT) — это открытый стандарт (RFC 7519) д�
 4. Сервер авторизации помещает Токены в тело ответа (в данном случае, можно и в заголовке).
    ```json
    {
-          "access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0dXNlciIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9sb2dpbiIsImV4cCI6MTY2NjY4OTAxMywiYXV0aG9yaXRpZXMiO  lsiUk9MRV9VU0VSIl19.bOphqTW8Wz7LWOatSLL2bv-xkzs_R4ng--bKG2ZdumwMW9mKZqlk0qzB2sIlY9QwEutM3DM_DkEuOxUdWpUUZA",
+         "access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0dXNlciIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9sb2dpbiIsImV4cCI6MTY2NjY4OTAxMywiYXV0aG9yaXRpZXMiO  lsiUk9MRV9VU0VSIl19.bOphqTW8Wz7LWOatSLL2bv-xkzs_R4ng--bKG2ZdumwMW9mKZqlk0qzB2sIlY9QwEutM3DM_DkEuOxUdWpUUZA",
       "refresh_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0dXNlciIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9sb2dpbiIsImV4cCI6MTY2NjY4OTMxM30.EP973Zhg9OSfS7zVX0M6fSpyCxEda70c2HdH9G13pAoZHgPtGmRjPd1waeY3GFmCk4skUZc6MZ5mqWBlj3pEhQ"
    }
    ```
@@ -44,7 +44,11 @@ JSON Web Token (JWT) — это открытый стандарт (RFC 7519) д�
    `curl -d "username=testuser&password=12345" -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0dXNlciIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9sb2dpbiIsImV4cCI6MTY2NjY4OTAxMywiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl19.bOphqTW8Wz7LWOatSLL2bv-xkzs_R4ng--bKG2ZdumwMW9mKZqlk0qzB2sIlY9QwEutM3DM_DkEuOxUdWpUUZA" -X GET http://localhost:8080/user`
 8. Сервер ресурсов проверяет токен, если токен подлинный, то клиентское приложение получает данные, которые он запросил.
    ```json
-   {"firstname":"TestUser","lastname":"TestUser","username":"testuser"}
+   {
+   "firstname":"TestUser",
+   "lastname":"TestUser",
+   "username":"testuser"
+   }
    ```
 Если срок действия Токена доступа истек, клиентское приложение отправляет POST запрос на URI /user/token/refresh и сервер авторизации возвращает 
 Токен доступа и Токен обновления. Если срок действия обоих токенов истек, пользователю потебуется авторизоваться снова.
